@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,8 +26,10 @@ class DetailBloc extends Bloc<DetailEvent, DetailState> {
         });*/
 
         emit(result.fold((entity) {
+          print("Detail Failed");
           return DetailFailedState(entity: entity);
         }, (entity) {
+          print("Detail Success");
           return DetailSuccessState(entity: entity, params: event.params);
         }));
       }

@@ -3,7 +3,7 @@ import 'package:lol_summonersearch/presentation/utils/timeconverter.dart';
 import 'package:shimmer/shimmer.dart';
 
 class SharedWidgets {
-  Widget DetailAppBar(context, _parameter) {
+  Widget DetailLoadingAppBar(context, _parameter) {
     return Container(
         height: MediaQuery.of(context).size.height / 3.6,
         width: MediaQuery.of(context).size.width,
@@ -67,6 +67,79 @@ class SharedWidgets {
         ));
   }
 
+  Widget DetailSuccessAppBar(context, _parameter, name, img) {
+    return Container(
+        height: MediaQuery.of(context).size.height / 3.6,
+        width: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(
+            color: Colors.grey,
+            image: DecorationImage(
+                fit: BoxFit.fill,
+                image: NetworkImage(
+                  _parameter.coverImg.toString(),
+                ))),
+        child: Column(
+          children: [
+            SafeArea(
+                child: Container(
+              width: MediaQuery.of(context).size.width,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.chevron_left,
+                      )),
+                  IconButton(
+                      onPressed: () {
+                        print("clicked star");
+                      },
+                      icon: Icon(
+                        Icons.star_border_outlined,
+                        color: Colors.yellow,
+                      )),
+                ],
+              ),
+            )),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Row(children: [
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                  child: Stack(
+                    children: [
+                      Container(
+                          color: Colors.green,
+                          height: 90,
+                          width: 90,
+                          child: Image.network(img)),
+                      Positioned.fill(
+                          child: Align(
+                        alignment: Alignment.topCenter,
+                        child: Container(
+                          height: 20,
+                          width: 20,
+                          color: Colors.grey,
+                          child: Text("20"),
+                        ),
+                      )),
+                    ],
+                  ),
+                ),
+                Container(
+                  child: Text(
+                    name,
+                    style: TextStyle(fontSize: 24),
+                  ),
+                )
+              ]),
+            ),
+          ],
+        ));
+  }
+
   Widget DetailListView(
       {required win,
       required champUrl,
@@ -93,7 +166,7 @@ class SharedWidgets {
                     topLeft: Radius.circular(20))),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [Text(win ? "W" : "L"), Text("20:00")],
+              children: [Text(win ? "Win" : "Lose")],
             )),
         Expanded(
           child: Container(

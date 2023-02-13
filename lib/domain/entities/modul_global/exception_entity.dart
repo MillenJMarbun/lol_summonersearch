@@ -22,7 +22,7 @@ class ExceptionEntity {
         code: dioError.response!.statusCode ?? 0,
         errorMessage: dioError.response!.statusMessage.toString(),
         errorDescription: dioError.response!.data is String
-            ? 'Server Mati'
+            ? 'Server Down'
             : dioError.response!.data['message'],
       );
 }

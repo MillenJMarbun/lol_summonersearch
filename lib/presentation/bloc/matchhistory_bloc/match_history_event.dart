@@ -5,7 +5,6 @@ abstract class MatchHistoryEvent extends Equatable {
 }
 
 class GetMatchHistoryEvent extends MatchHistoryEvent {
-
   final String url;
   const GetMatchHistoryEvent({required this.url});
 

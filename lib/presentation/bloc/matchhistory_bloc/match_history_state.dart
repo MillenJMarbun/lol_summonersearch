@@ -15,12 +15,10 @@ class MatchHistoryLoadingState extends MatchHistoryState {
 }
 
 class MatchHistorySuccessState extends MatchHistoryState {
-  List<String> matchesList;
-
-  MatchHistorySuccessState({required this.matchesList});
-
+  List<String> matcheslist;
+  MatchHistorySuccessState({required this.matcheslist});
   @override
-  List<Object?> get props => [matchesList];
+  List<Object?> get props => [matcheslist];
 }
 
 class MatchHistoryFailedState extends MatchHistoryState {

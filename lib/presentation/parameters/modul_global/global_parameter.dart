@@ -3,6 +3,6 @@ class GlobalParameter {
   String region = "";
 
   GlobalParameter() {
-    this.api_key = "RGAPI-e80226b5-aa9e-47c9-b2b4-f71e82f42301";
+    this.api_key = "RGAPI-03c19eb9-d226-4951-8ef3-8ac0f37f9234";
   }
 }

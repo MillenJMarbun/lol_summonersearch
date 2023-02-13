@@ -25,8 +25,9 @@ class MatchHistoryBloc extends Bloc<MatchHistoryEvent, MatchHistoryState> {
           print("hello result = $result");
           //List<String> data = result;
           var data = getMatchesResponseModelFromJson(jsonEncode(result));
+          print("matches data here: ${data}");
 
-          emit(MatchHistorySuccessState(matchesList: data));
+          emit(MatchHistorySuccessState(matcheslist: data));
         } catch (e) {
           emit(MatchHistoryFailedState());
         }
