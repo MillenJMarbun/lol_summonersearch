@@ -4,6 +4,8 @@
 
 import 'dart:convert';
 
+import 'package:lol_summonersearch/domain/entities/modul_matchhistory/match_history_entity.dart';
+
 GetMatchesResponseModel getMatchesResponseModelFromJson(String str) =>
     GetMatchesResponseModel.fromJson(json.decode(str));
 
@@ -29,6 +31,9 @@ class GetMatchesResponseModel {
         "metadata": metadata.toJson(),
         "info": info.toJson(),
       };
+  MatchHistoryEntity toEntity() {
+    return MatchHistoryEntity(info: this.info, metadata: this.metadata);
+  }
 }
 
 class Info {

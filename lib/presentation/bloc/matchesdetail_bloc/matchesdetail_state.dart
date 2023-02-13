@@ -15,15 +15,19 @@ class MatchDetailLoadingState extends MatchesdetailState {
 }
 
 class MatchDetailFailState extends MatchesdetailState {
+  final ExceptionEntity entity;
+  MatchDetailFailState({required this.entity});
+
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [entity];
 }
 
 class MatchDetailSuccessState extends MatchesdetailState {
-  List<GetMatchesResponseModel> matches;
+  final List<MatchHistoryEntity> entity;
+  //final MatchHistoryEntity entity;
 
-  MatchDetailSuccessState({required this.matches});
+  MatchDetailSuccessState({required this.entity});
 
   @override
-  List<Object?> get props => [matches];
+  List<Object?> get props => [entity];
 }

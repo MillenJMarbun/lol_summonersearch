@@ -6,8 +6,9 @@ abstract class MatchesdetailEvent extends Equatable {
 
 class GetMatchesDetailEvent extends MatchesdetailEvent {
   List<String> matches;
+  MatchHistoryParameter param;
 
-  GetMatchesDetailEvent({required this.matches});
+  GetMatchesDetailEvent({required this.matches, required this.param});
   @override
-  List<Object?> get props => [matches];
+  List<Object?> get props => [matches, param];
 }

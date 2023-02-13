@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lol_summonersearch/data/models/model_matches/matches_detail_model.dart';
+import 'package:lol_summonersearch/domain/entities/modul_matchhistory/match_history_entity.dart';
 import 'package:lol_summonersearch/presentation/bloc/detail_bloc/detail_bloc.dart';
 import 'package:lol_summonersearch/presentation/bloc/matchesdetail_bloc/matchesdetail_bloc.dart';
 import 'package:lol_summonersearch/presentation/bloc/matchhistory_bloc/match_history_bloc.dart';
@@ -20,8 +21,9 @@ class DetailScreen extends StatefulWidget {
 class _DetailScreenState extends State<DetailScreen> {
   GetBySummonerNameParameter _parameter = GetBySummonerNameParameter();
   GlobalParameter _globalParameter = GlobalParameter();
+  MatchHistoryParameter _matchHistoryParameter = MatchHistoryParameter();
 
-  List<GetMatchesResponseModel>? match;
+  List<MatchHistoryEntity>? match;
   var currSummName = "";
 
   @override
@@ -70,6 +72,7 @@ class _DetailScreenState extends State<DetailScreen> {
                     print("here state match list: ${state.matcheslist}");
                     BlocProvider.of<MatchesdetailBloc>(context).add(
                         GetMatchesDetailEvent(
+                            param: _matchHistoryParameter,
                             matches: state
                                 .matcheslist)); // send state.matchesList to event
                   }
@@ -83,7 +86,7 @@ class _DetailScreenState extends State<DetailScreen> {
               child: BlocConsumer<MatchesdetailBloc, MatchesdetailState>(
                 listener: (context, state) {
                   if (state is MatchDetailSuccessState) {
-                    match = state.matches;
+                    match = state.entity;
                   }
                 },
                 builder: (context, state) {
